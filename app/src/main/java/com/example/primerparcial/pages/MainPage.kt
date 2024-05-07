@@ -11,11 +11,16 @@ import androidx.compose.material3.TopAppBarDefaults.topAppBarColors
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.NavController
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
 import com.example.primerparcial.ui.theme.PrimerParcialTheme
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun MainPage(modifier: Modifier = Modifier) {
+    val navController = rememberNavController()
     Scaffold(
         topBar = {
             TopAppBar(
@@ -28,10 +33,17 @@ fun MainPage(modifier: Modifier = Modifier) {
             )
         }
     ) {
-        Text(
-            text = "Hello $",
-            modifier = modifier.padding(it)
-        )
+        NavHost(modifier = modifier.padding(it),
+            navController = navController,
+            startDestination = "pantallaLogin"){
+
+            composable("pantallaLogin") { PantallaLogin(navController = navController) }
+            composable("loginExitoso") { LoginExitoso(navController = navController) }
+            composable("loginIncorrecto") { LoginIncorrecto(navController = navController) }
+
+        }
+
+
     }
 
 
