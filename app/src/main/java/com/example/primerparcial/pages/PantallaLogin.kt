@@ -1,8 +1,9 @@
 package com.example.primerparcial.pages
 
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.FlowRowScopeInstance.align
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
 import androidx.compose.material3.Text
@@ -31,10 +32,11 @@ fun PantallaLogin(
     var contrasena by remember { mutableStateOf("") }
 
 
-    Column(modifier = modifier) {
+    Column(modifier = modifier.fillMaxWidth(),
+        verticalArrangement = Arrangement.Center) {
         Text(
-            text = "Bienvenido a la pagina de logeo, por favor ingrese los datos solicitados:",
-
+            text = "Bienvenido!!, por favor ingrese los datos solicitados:",
+            modifier = Modifier.align(Alignment.CenterHorizontally)
             )
         TextField(value = usuario, onValueChange = {
             usuario = it
